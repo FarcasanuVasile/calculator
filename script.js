@@ -2,7 +2,6 @@ const container = document.querySelector(".calculator-wrap");
 const buttons = container?.querySelectorAll("button");
 const calculatorStatusEl = container.querySelector(".status");
 const calculatorScreenEl = container.querySelector("input");
-const buttonEqual = container.querySelector(".btn-eq"); // am selectat clasa pt =
 const historyEl = container.querySelector(".history"); //am selectat pentru clasa history
 
 let calculatorStatus = false;
@@ -12,6 +11,7 @@ let secondaryValue = "";
 let total = 0;
 let operation = ""; //am creat variabila operation
 let resultDisplayed = false; //adaug o variabila ce vreau sa o folosesc pentru a nu se mai putea adauga cifre dupa un rezultat
+const operations = [];
 
 //variabile pentru istoricul calculelor
 
@@ -41,7 +41,7 @@ let lastTotal = "";
 			//OFF = Dezactivează/activează butoanele în funcție de status
 			// am adaugat disabled pe butoane
 			buttons.forEach((btn) => {
-				if (btn.getAttribute("data-action") !== "equal") btn.disabled = !calculatorStatus;
+				if (btn.getAttribute("data-action") !== "toggle") btn.disabled = !calculatorStatus;
 			});
 		}
 
@@ -100,22 +100,21 @@ let lastTotal = "";
 				let num2 = parseFloat(secondaryValue);
 				let tempOperation = operation; //pentru history
 
-				if (operation === "+") {
-					total = num1 + num2;
-				}
-				if (operation === "-") {
-					total = num1 - num2;
-				}
-				if (operation === "*") {
-					total = num1 * num2;
-				}
-				if (operation === "/") {
-					if (num2 == 0) {
-						calculatorScreenEl.value = "Error";
+				switch (operation) {
+					case "+":
+						total = num1 + num2;
+						break;
+					case "-":
+						total = num1 - num2;
+						break;
+					case "*":
+						total = num1 * num2;
+						break;
+					case "/":
+						num2 === 0 ? (calculatorScreenEl.value = "Error") : (total = num1 / num2);
+						break;
+					default:
 						return;
-					} else {
-						total = num1 / num2;
-					}
 				}
 
 				calculatorScreenEl.value = total; // afisare rezultat
@@ -126,6 +125,8 @@ let lastTotal = "";
 				lastNum2 = num2;
 				lastOperation = tempOperation;
 				lastTotal = total;
+
+				operations.push(`${num1} ${lastOperation} ${num2} = ${total}`);
 
 				//pentru a continua calculul
 				currentValue = total.toString(); //pastreaza rezultatul pentru urmatoarele calcule
@@ -166,11 +167,7 @@ let lastTotal = "";
 
 		//pentru a vedea istoricul operatiilor
 		if (action === "history") {
-			if (lastOperation === "√") {
-				historyEl.innerHTML += `<p>√${lastNum1} = ${lastTotal}</p>`;
-			} else if (lastOperation !== "") {
-				historyEl.innerHTML += `<p>${lastNum1} ${lastOperation} ${lastNum2} = ${lastTotal}</p>`;
-			}
+			historyEl.innerHTML += `<p>${operations.join("<br />")}</p>`;
 		}
 	})
 );
