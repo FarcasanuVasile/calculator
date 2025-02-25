@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="calculator-wrap">
+		<span class="status disabled">OFF</span>
+		<input type="text" class="calculator-screen" disabled>
+	<div class="buttons-container">
+		<button class="btn-calculator btn-toggle second-column first-row" type="button" title="Calculator Button" data-action="toggle" >I/O</button>
+		<button class="btn-calculator btn-0 second-column last-row" type="button" title="Calculator Button" data-action="input" data-value="0" disabled>0</button>
+		<button class="btn-calculator btn-1 fourth-row first-column" type="button" title="Calculator Button" data-action="input" data-value="1" disabled>1</button>
+		<button class="btn-calculator btn-2 fourth-row second-column" type="button" title="Calculator Button" data-action="input" data-value="2" disabled>2</button>
+		<button class="btn-calculator btn-3 fourth-row third-column" type="button" title="Calculator Button" data-action="input" data-value="3" disabled>3</button>
+		<button class="btn-calculator btn-4 third-row first-column" type="button" title="Calculator Button" data-action="input" data-value="4" disabled>4</button>
+		<button class="btn-calculator btn-5 third-row second-column" type="button" title="Calculator Button" data-action="input" data-value="5" disabled>5</button>
+		<button class="btn-calculator btn-6 third-row third-column" type="button" title="Calculator Button" data-action="input" data-value="6" disabled>6</button>
+		<button class="btn-calculator btn-7 second-row first-column" type="button" title="Calculator Button" data-action="input" data-value="7" disabled>7</button>
+		<button class="btn-calculator btn-8 second-row second-column" type="button" title="Calculator Button" data-action="input" data-value="8" disabled>8</button>
+		<button class="btn-calculator btn-9 second-row third-column" type="button" title="Calculator Button" data-action="input" data-value="9" disabled>9</button>
+		<button class="btn-calculator btn-eq last-column last-row" type="button" title="Calculator Button" data-action="equal" data-operator="=" disabled >=</button>
+		<button class="btn-calculator btn-history third-column last-row" type="button" title="Calculator Button" data-action="history" data-operator="history" disabled >🕘</button>
+		<button class="btn-calculator btn-times last-column second-row" type="button" title="Calculator Button" data-action="operation" data-operator="*" disabled >x</button>
+		<button class="btn-calculator btn-add last-column fourth-row" type="button" title="Calculator Button" data-action="operation" data-operator="+" disabled >+</button>
+		<button class="btn-calculator btn-subtract last-column third-row" type="button" title="Calculator Button" data-action="operation" data-operator="-" disabled >-</button>
+		<button class="btn-calculator btn-division last-column first-row" type="button" title="Calculator Button" data-action="operation" data-operator="/" disabled>/</button>
+		<button class="btn-calculator btn-sqrt third-column first-column" type="button" title="Calculator Button" data-action="sqrt" data-operator="√" disabled>√</button>
+		<button class="btn-calculator btn-reset first-row first-column" type="button" title="Calculator Button" data-action="clear" data-operator="C" disabled>C</button>
+	</div>
+	<div class="history"></div>
+	<script src="script.js" type="text/javascript"></script>
+</div>
+</body>
+</html>
