@@ -38,20 +38,13 @@ let lastTotal = "";
 				//se sterge istoricul la inchidere
 				historyEl.innerHTML = "";
 			}
-		}
 
-		//OFF = Dezactivează/activează butoanele în funcție de status
-		// am adaugat disabled pe butoane
-		buttons.forEach((btn) => {
-			if (btn !== buttonStart) {
-				// nu se modifica si butonul I/O
-				if (calculatorStatusEl.innerText === "OFF") {
-					btn.disabled = true; //dezactiveaza butoanele
-				} else {
-					btn.disabled = false; //activeaza butoanele
-				}
-			}
-		});
+			//OFF = Dezactivează/activează butoanele în funcție de status
+			// am adaugat disabled pe butoane
+			buttons.forEach((btn) => {
+				if (btn !== buttonStart) btn.disabled = !calculatorStatus;
+			});
+		}
 
 		//verifica daca este un input si daca a fost apasat un buton
 		//Daca se apasa o cifra (0-9)
