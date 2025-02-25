@@ -2,7 +2,6 @@ const container = document.querySelector(".calculator-wrap");
 const buttons = container?.querySelectorAll("button");
 const calculatorStatusEl = container.querySelector(".status");
 const calculatorScreenEl = container.querySelector("input");
-const buttonStart = container.querySelector(".btn-toggle"); // am selectat clasa pentru btn I/O
 const buttonEqual = container.querySelector(".btn-eq"); // am selectat clasa pt =
 const historyEl = container.querySelector(".history"); //am selectat pentru clasa history
 
@@ -42,7 +41,7 @@ let lastTotal = "";
 			//OFF = Dezactivează/activează butoanele în funcție de status
 			// am adaugat disabled pe butoane
 			buttons.forEach((btn) => {
-				if (btn !== buttonStart) btn.disabled = !calculatorStatus;
+				if (btn.getAttribute("data-action") !== "equal") btn.disabled = !calculatorStatus;
 			});
 		}
 
