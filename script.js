@@ -167,7 +167,7 @@ let lastTotal = "";
 
 		//pentru a vedea istoricul operatiilor
 		if (action === "history") {
-			historyEl.innerHTML += `<p>${operations.join("<br />")}</p>`;
+			historyEl.innerHTML = `<p>${operations.join("<br />")}</p>`;
 		}
 	})
 );
